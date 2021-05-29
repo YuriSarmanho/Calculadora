@@ -1,0 +1,19 @@
+1. Conceitos de html
+    - blocos (tags)
+    - pixels
+    - posicionamento
+    - nesting
+
+2. Conceitos de css
+    - propriedades
+    - seletores
+    - classes
+    - cascata
+
+3. Conceitos de JS
+    - eventos (teclado e mouse)
+    - DOM (achar elementos na tela)
+
+4. Conceitos do navegador
+    - renderizar
+    - eventos

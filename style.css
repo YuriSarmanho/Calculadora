@@ -1,0 +1,72 @@
+.container{             /*Determina a largura que sera a calculadora, possibilitando a variacao da largura*/
+    margin: 20px auto;
+    max-width: 1200px;   
+}
+.calculadora{           /*Determina a altura, largura, cor de fundo, margem regulavel, o tipo de display e 
+                        como sera organizado*/
+    width: 400px;
+    height: 600px;
+    background-color: #ccc;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+.entrada{               /*Determina as caracteristicas do visor, */
+    width: 100%;
+    min-height: 20%;
+    flex-grow: 0;
+    padding: 5px;
+    box-sizing: border-box;/*tipo de borda da caixa de informacao*/
+}
+
+.entrada input{         /*Determina as caracteristicas do input, determinado que ele ocupe toda a area de 
+                        'entrada', o tipo de borda, e até onde vai mostras os numeros*/
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: none;
+    font-size: 40px;
+    padding: 20px;
+}
+.entrada input:focus{   /*Tira linha de demarcacao*/
+    outline: none;
+}
+.container-botoes{      /*Determina o tipo de display dos botoes e que eles irao ocupar todo o espaco de altura*/
+    flex-grow: 1;
+    display: flex;
+}
+#area-numeros, #area-operacoes{/*?*/
+    height: 100%;
+}
+#area-numeros{          /*Determina que os botoes irao ocupar todo o espaco horizontalmente, o tipo de display,
+                        e como ira ficar organizado os botoes*/
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.linha{
+    display: flex;
+    flex-grow: 1;
+}
+.linha button{
+    flex-grow: 1;
+}
+#area-operacoes{        /*Determina area que os botoes de operacao irao ocupar horizontalmente e tipo de 
+                        display e como ira ficar organizado */
+    display: flex;
+    flex-direction: column;
+    min-width: 20%;
+}
+#area-operacoes button{
+    flex-grow: 1;       /*Faz com que os botoes de operacao ocupem toda a area da coluna*/
+}
+button{                 /* Determina o estilo dos botoes*/
+    box-sizing: border-box;
+    font-size: 1rem;
+    text-align: center;
+    border: #bbbbbbbb 1px solid;
+}
+
+button:hover{           /*Determina o fundo dos botoes quando o mouse passa por cima*/
+    background-color: #e6e6e6;
+}
