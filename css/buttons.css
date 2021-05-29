@@ -1,0 +1,27 @@
+.container-botoes {
+    /*Determina o tipo de display dos botoes e que eles irao ocupar todo o espaco de altura*/
+    flex-grow: 1;
+    display: flex;
+}
+
+.linha button {
+    flex-grow: 1;
+}
+
+#area-operacoes button {
+    flex-grow: 1;
+    /*Faz com que os botoes de operacao ocupem toda a area da coluna*/
+}
+
+button {
+    /* Determina o estilo dos botoes*/
+    box-sizing: border-box;
+    font-size: 1rem;
+    text-align: center;
+    border: #bbbbbbbb 1px solid;
+}
+
+button:hover {
+    /*Determina o fundo dos botoes quando o mouse passa por cima*/
+    background-color: #e6e6e6;
+}

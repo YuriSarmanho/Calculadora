@@ -1,0 +1,31 @@
+/* seletor que vai corresponder ao que tem no html */
+
+.entrada {
+    /*Determina as caracteristicas do visor, */
+    background-color: rgb(46, 57, 71);
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    padding: 5px;
+    box-sizing: border-box;
+    /*tipo de borda da caixa de informacao*/
+}
+
+.entrada input {
+    /*Determina as caracteristicas do input, determinado que ele ocupe toda a area de 
+                        'entrada', o tipo de borda, e até onde vai mostras os numeros*/
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: none;
+    font-size: 40px;
+    padding: 20px;
+    background-color: rgb(46, 57, 71);
+    text-align: right;
+    color: #fff;
+    font-family: 'Roboto Mono', monospace;
+}
+
+.entrada input:focus {
+    /*Tira linha de demarcacao*/
+    outline: none;
+}
