@@ -1,3 +1,11 @@
+/* seletor que vai corresponder ao que tem no html */
+
+/* .class button */
+
+/* definir os estilos */
+
+/* margin, background, font-size ... */
+
 .container {
     /*Determina a largura que sera a calculadora, possibilitando a variacao da largura*/
     margin: 20px auto;

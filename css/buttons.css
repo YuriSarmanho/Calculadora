@@ -4,24 +4,38 @@
     display: flex;
 }
 
-.linha button {
+.linha .calc-btn {
     flex-grow: 1;
 }
 
-#area-operacoes button {
+#area-operacoes .calc-btn {
     flex-grow: 1;
     /*Faz com que os botoes de operacao ocupem toda a area da coluna*/
 }
 
-button {
+/* seleciona pela tag */
+
+.calc-btn {
     /* Determina o estilo dos botoes*/
     box-sizing: border-box;
-    font-size: 1rem;
+    font-size: 1.2rem;
     text-align: center;
-    border: #bbbbbbbb 1px solid;
+    border: rgb(51, 52, 54) 1px solid;
+    background-color: #fff;
+    font-family: 'Roboto Mono', monospace;
+    cursor: pointer;
 }
 
-button:hover {
+.calc-btn:hover {
     /*Determina o fundo dos botoes quando o mouse passa por cima*/
-    background-color: #e6e6e6;
+    background-color: #f1f1f1;
+}
+
+.calc-btn-orange {
+    background-color: rgb(251, 129, 49);
+    color: rgb(255, 255, 255);
+}
+
+.calc-btn-orange:hover {
+    background-color: rgb(243, 146, 82);
 }
