@@ -1,0 +1,6 @@
+git add . //adicionar alterações ao commit
+git commit -m "mensagem" //Escrever msg do commit
+git push //Vai enviar para o repositório
+git pull //Baixar alterações do repositório 
+
+animações em css
