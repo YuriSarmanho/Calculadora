@@ -13,7 +13,6 @@ const memory = {
     isTypingSecondValue: false,
     isTypingChange: false,
     nextOperation: false,
-    countOperations: 0,
 };
 
 // Regra de negócio
@@ -54,14 +53,14 @@ function cleanMemory() {
     memory.firstValue = [];
     memory.secondValue = [];
     memory.operations = [];
-    memory.countOperations = 0;
+    //memory.countOperations = false;
     memory.isTypingChange = false;
-    memory.nextOperation = false;
+    memory.nextOperation = false; 
     memory.isTypingSecondValue = false;
 }
 
 function nextNumber() { //adicionado
-    memory.countOperations++;
+    //memory.countOperations = true;
     memory.isTypingSecondValue = true;
     memory.isTypingChange = true;
 }
@@ -72,35 +71,28 @@ function changeValue(){//adicionado
     memory.operations = [];
     memory.firstValue = memory.result;
 }
-function execComposedOperation(teste){//adicionado 
-    if(teste){
-        const result = executeOperation();
-        memory.operations = [memory.operations[2]];
-        memory.firstValue = [result];
-        memory.secondValue = [];
-    }else{
-        const result = executeOperation();
-        memory.firstValue = result;
-        memory.secondValue = [];
-        memory.operations[0] = memory.operations[1];
-        memory.operations.pop([1]);
-        memory.nextOperation = false;
-    }
+
+function execComposedOperation(){
+    const result = executeOperation();
+    memory.firstValue = result;
+    memory.secondValue = [];
+    memory.nextOperation = false;
+    memory.operations = [memory.operations[1]];  
 }
+
 function isComposedOperation(teste,value){
     if(teste){
-        return memory.countOperations > 1 && value != "=" && memory.nextOperation
-    }else{
-        return memory.countOperations > 0 && memory.operations[1] != "=" && memory.secondValue > 0
+        return value != "=" && memory.nextOperation//dps do igual true
+    }else{//problema
+        return memory.operations[1] != "=" && memory.secondValue > 0//antes do igual false
     }
 }
 function execEqual(){
     memory.result = executeOperation();
     updateVisor(memory.result, true);
-    memory.countOperations++;
     memory.nextOperation = true;
 }
-
+//n ta entrado na operação composta quando aperta um outro valor 
 
 function inputHandler(value) {
     if (isOperation(value)) {
@@ -115,12 +107,14 @@ function inputHandler(value) {
         }
         //Realizar operação composta
         if (isComposedOperation()) {
-            execComposedOperation();
+            execComposedOperation();  
         }
         //Operação composta apertando igual
          if (isComposedOperation(true,value)) {
-            execComposedOperation(true);
+            memory.operations[1] = memory.operations[2];
+            execComposedOperation();
         }
+        
         if (memory.isTypingChange && value === "+-") {
             changeValue();
             updateVisor(memory.result, true);
@@ -129,7 +123,6 @@ function inputHandler(value) {
             updateVisor(null, true);
             cleanMemory();
         }
-        
     } else {
         updateVisor(value);
         if (memory.isTypingSecondValue) {
