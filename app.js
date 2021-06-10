@@ -60,60 +60,76 @@ function cleanMemory() {
     memory.isTypingSecondValue = false;
 }
 
+function nextNumber() { //adicionado
+    memory.countOperations++;
+    memory.isTypingSecondValue = true;
+    memory.isTypingChange = true;
+}
+function changeValue(){//adicionado
+    memory.result *= -1; //memory.result = memory.result * -1
+    memory.nextOperation = false;
+    memory.secondValue = [];
+    memory.operations = [];
+    memory.firstValue = memory.result;
+}
+function execComposedOperation(teste){//adicionado 
+    if(teste){
+        const result = executeOperation();
+        memory.operations = [memory.operations[2]];
+        memory.firstValue = [result];
+        memory.secondValue = [];
+    }else{
+        const result = executeOperation();
+        memory.firstValue = result;
+        memory.secondValue = [];
+        memory.operations[0] = memory.operations[1];
+        memory.operations.pop([1]);
+        memory.nextOperation = false;
+    }
+}
+function isComposedOperation(teste,value){
+    if(teste){
+        return memory.countOperations > 1 && value != "=" && memory.nextOperation
+    }else{
+        return memory.countOperations > 0 && memory.operations[1] != "=" && memory.secondValue > 0
+    }
+}
+function execEqual(){
+    memory.result = executeOperation();
+    updateVisor(memory.result, true);
+    memory.countOperations++;
+    memory.nextOperation = true;
+}
+
+
 function inputHandler(value) {
     if (isOperation(value)) {
         saveOperation(value);
         // define isTypingSecondValue
         if (memory.firstValue.length > 0) {
-            memory.countOperations++;
-            memory.isTypingSecondValue = true;
-            memory.isTypingChange = true;
+            nextNumber();
         }
         //Operação simples
         if (isExecutingEqual(value)) {
-            memory.result = executeOperation();
-            updateVisor(memory.result, true);
-            memory.countOperations++;
-            memory.nextOperation = true;
+           execEqual();
         }
         //Realizar operação composta
-        if (
-            memory.countOperations > 0 &&
-            memory.operations[1] != "=" &&
-            memory.secondValue > 0
-        ) {
-            const result = executeOperation();
-            memory.firstValue = result;
-            memory.secondValue = [];
-            memory.operations[0] = memory.operations[1];
-            memory.operations.pop([1]);
-            memory.nextOperation = false;
+        if (isComposedOperation()) {
+            execComposedOperation();
         }
-
+        //Operação composta apertando igual
+         if (isComposedOperation(true,value)) {
+            execComposedOperation(true);
+        }
         if (memory.isTypingChange && value === "+-") {
-            memory.result *= -1; //memory.result = memory.result * -1
+            changeValue();
             updateVisor(memory.result, true);
-            memory.nextOperation = false;
-            memory.secondValue = [];
-            memory.operations = [];
-            memory.firstValue = memory.result;
         }
-
         if (value === "ac") {
             updateVisor(null, true);
             cleanMemory();
         }
-        //Operação composta apertando igual
-        if (
-            memory.countOperations > 1 &&
-            value != "=" &&
-            memory.nextOperation
-        ) {
-            const result = executeOperation();
-            memory.operations = [memory.operations[2]];
-            memory.firstValue = [result];
-            memory.secondValue = [];
-        }
+        
     } else {
         updateVisor(value);
         if (memory.isTypingSecondValue) {
