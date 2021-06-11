@@ -1,9 +1,5 @@
 // indentificar outros casos de refatoração pra função
-
-let clickedValeus = [];
-
 const operationStrings = ["+", "-", "X", "/", "ac", "+-", "%", "="];
-
 //State
 const memory = {
     result: 0,
@@ -53,18 +49,16 @@ function cleanMemory() {
     memory.firstValue = [];
     memory.secondValue = [];
     memory.operations = [];
-    //memory.countOperations = false;
     memory.isTypingChange = false;
     memory.nextOperation = false; 
     memory.isTypingSecondValue = false;
 }
 
-function nextNumber() { //adicionado
-    //memory.countOperations = true;
+function nextNumber() { 
     memory.isTypingSecondValue = true;
     memory.isTypingChange = true;
 }
-function changeValue(){//adicionado
+function changeValue(){
     memory.result *= -1; //memory.result = memory.result * -1
     memory.nextOperation = false;
     memory.secondValue = [];
@@ -79,20 +73,20 @@ function execComposedOperation(){
     memory.nextOperation = false;
     memory.operations = [memory.operations[1]];  
 }
-
+    
 function isComposedOperation(teste,value){
     if(teste){
-        return value != "=" && memory.nextOperation//dps do igual true
-    }else{//problema
-        return memory.operations[1] != "=" && memory.secondValue > 0//antes do igual false
+        return value != "=" && memory.nextOperation
+    }else{
+        return memory.operations[1] != "=" && memory.secondValue > 0
     }
 }
+
 function execEqual(){
     memory.result = executeOperation();
     updateVisor(memory.result, true);
     memory.nextOperation = true;
 }
-//n ta entrado na operação composta quando aperta um outro valor 
 
 function inputHandler(value) {
     if (isOperation(value)) {
@@ -111,6 +105,10 @@ function inputHandler(value) {
         }
         //Operação composta apertando igual
          if (isComposedOperation(true,value)) {
+             //(f1) (op0)   (f2)  (op1)    (f1) (op2)
+            //  2     +      2     =       4     +   
+            // (f1) (op0)
+            //  4     +
             memory.operations[1] = memory.operations[2];
             execComposedOperation();
         }
