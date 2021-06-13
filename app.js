@@ -1,4 +1,12 @@
-const operationStrings = ["+", "-", "X", "/", "ac", "+-", "%", "="];
+// criei um arquivo
+// importar no html
+
+// isso é um objeto ou instância da classe Helper
+const helper = new OperationHelper();
+const calculator = new Calculator();
+
+// analisando classes e as responsabilidades de cada uma
+
 //State
 const memory = {
     result: 0,
@@ -23,6 +31,7 @@ const memory = {
 
 //  ÚNICA RESPONSABILIDADE
 
+// pertence a calculadora
 function updateVisor(value, reset) {
     const display = document.getElementById("visor");
     if (reset) {
@@ -32,33 +41,28 @@ function updateVisor(value, reset) {
     }
 }
 
-function isOperation(value) {
-    return operationStrings.includes(value);
-}
-
-function isSimpleOperation(value) {
-    return memory.isTypingSecondValue && value === "=";
-}
-
+// pertence a calculadora
 function saveOperation(value) {
     memory.operations.push(value);
 }
 
+// pertence a calculadora
 function cleanMemory() {
     memory.firstValue = [];
     memory.secondValue = [];
     memory.operations = [];
     memory.isTypingChange = false;
-    memory.nextOperation = false; 
+    memory.nextOperation = false;
     memory.isTypingSecondValue = false;
 }
-
-function nextNumber() { 
+// pertence a calculadora
+function nextNumber() {
     memory.isTypingSecondValue = true;
     memory.isTypingChange = true;
 }
 
-function changeValue(){
+// pertence a calculadora
+function changeValue() {
     memory.result *= -1; //memory.result = memory.result * -1
     memory.nextOperation = false;
     memory.secondValue = [];
@@ -67,11 +71,8 @@ function changeValue(){
     updateVisor(memory.result, true);
 }
 
-function isChangeValue(value){
-    return memory.isTypingChange && value === "+-"
-}
-
-function addNumber(value){
+// pertence a calculadora
+function addNumber(value) {
     updateVisor(value);
     if (memory.isTypingSecondValue) {
         if (memory.secondValue.length === 0) {
@@ -83,31 +84,32 @@ function addNumber(value){
     }
 }
 
-function isComposedOperation(typeComposed,value){
-    if(typeComposed){
-       return  typeComposedOperation(true,value)
-    }else{
-       return typeComposedOperation()
+// pertence a calculadora
+function isComposedOperation(typeComposed, value) {
+    if (typeComposed) {
+        return typeComposedOperation(true, value);
     }
+    return typeComposedOperation();
 }
 
-function typeComposedOperation(type,value){
-    if(type){
-        return value != '=' && memory.nextOperation//dps do igual
-    }else{
-        return memory.operations[1] != '=' && memory.secondValue > 0//antes do igual
+// percente a calcudora
+function typeComposedOperation(isAfterEqualOperation, value) {
+    if (isAfterEqualOperation) {
+        return value != "=" && memory.nextOperation;
     }
+    // todo: explicar coerção de tipo em memory.secodValue
+    return memory.operations[1] != "=" && memory.secondValue > 0; //antes do igual
 }
 
-function execComposedOperation(){
+function execComposedOperation() {
     const result = executeOperation();
     memory.firstValue = result;
     memory.secondValue = [];
     memory.nextOperation = false;
-    memory.operations = [memory.operations[1]];  
+    memory.operations = [memory.operations[1]];
 }
 
-function execSimpleEqual(){
+function execSimpleEqual() {
     memory.result = executeOperation();
     updateVisor(memory.result, true);
     memory.nextOperation = true;
@@ -130,37 +132,3 @@ function executeOperation() {
             );
     }
 }
-
-function inputHandler(value) {
-    if (isOperation(value)) {
-        saveOperation(value);
-        // define isTypingSecondValue
-        if (memory.firstValue.length > 0) {
-            nextNumber();
-        }
-        //Operação simples
-        if (isSimpleOperation(value)) {
-           execSimpleEqual();
-        }
-        //Realizar operação composta
-        if (isComposedOperation()) {
-            execComposedOperation();  
-        }
-        //Operação composta apertando igual
-         if (isComposedOperation(true,value)) {
-            memory.operations[1] = memory.operations[2];
-            execComposedOperation();
-        }
-        if (isChangeValue(value)) {
-            changeValue();
-        }
-        if (value === "ac") {
-            updateVisor(null, true);
-            cleanMemory();
-        }
-    } else {
-        addNumber(value);
-    }
-}
-
-
