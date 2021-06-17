@@ -6,26 +6,26 @@
 class Calculator {
     
     execComposedOperation() {
-    const result = this.executeOperation();
-    memory.firstValue = result;
-    memory.secondValue = [];
-    memory.nextOperation = false;
-    memory.operations = [memory.operations[1]];
+        const result = this.executeOperation();
+        memory.firstValue = result;
+        memory.secondValue = [];
+        memory.nextOperation = false;
+        memory.operations = [memory.operations[1]];
     }
      
     execSimpleEqual() {
-    memory.result = this.executeOperation();
-    updateVisor(memory.result, true);
-    memory.nextOperation = true;
+        memory.result = this.executeOperation();
+        updateVisor(memory.result, true);
+        memory.nextOperation = true;
     }
 
     cleanMemory() {
-    memory.firstValue = [];
-    memory.secondValue = [];
-    memory.operations = [];
-    memory.isTypingChange = false;
-    memory.nextOperation = false;
-    memory.isTypingSecondValue = false;
+        memory.firstValue = [];
+        memory.secondValue = [];
+        memory.operations = [];
+        memory.isTypingChange = false;
+        memory.nextOperation = false;
+        memory.isTypingSecondValue = false;
     }
 
     changeValue() {
@@ -36,20 +36,20 @@ class Calculator {
         memory.firstValue = memory.result;
         updateVisor(memory.result, true);
     }
-    
+
     executeOperation() {
-    const firstOperation = memory.operations[0];
-        switch (firstOperation) {
-            case "+":
-                return Number(memory.firstValue) + Number(memory.secondValue);
-            case "-":
-                return Number(memory.firstValue) - Number(memory.secondValue);
-            case "X":
-                return Number(memory.firstValue) * Number(memory.secondValue);
-            case "/":
-                return Number(memory.firstValue) / Number(memory.secondValue);
-            case "%":
-                return (Number(memory.firstValue) / 100) * Number(memory.secondValue);
+        const firstOperation = memory.operations[0];
+            switch (firstOperation) {
+                case "+":
+                    return Number(memory.firstValue) + Number(memory.secondValue);
+                case "-":
+                    return Number(memory.firstValue) - Number(memory.secondValue);
+                case "X":
+                    return Number(memory.firstValue) * Number(memory.secondValue);
+                case "/":
+                    return Number(memory.firstValue) / Number(memory.secondValue);
+                case "%":
+                    return (Number(memory.firstValue) / 100) * Number(memory.secondValue);
         }
     }
 }

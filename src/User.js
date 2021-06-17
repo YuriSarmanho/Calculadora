@@ -1,8 +1,8 @@
-//Receber e determinar as ações através dos comandos do usuário
 class User{
+
     inputHandler(value) {
-        if (helper.isOperation(value)) {
-            saveOperation(value);
+            if (helper.isOperation(value)) {
+                saveOperation(value);
             // define isTypingSecondValue
             if (memory.firstValue.length > 0) {
                 nextNumber();
@@ -27,8 +27,8 @@ class User{
                 updateVisor(null, true);
                 calculator.cleanMemory();
             }
-        } else {
-            addNumber(value);
-        }
+            }  else{
+                addNumber(value);
+            }
     }
 }
