@@ -1,19 +1,13 @@
-1. Conceitos de html
-    - blocos (tags)
-    - pixels
-    - posicionamento
-    - nesting
+Regra de negócio
+funcionalidades
+soma, subtração, guardar um historico das operações
 
-2. Conceitos de css
-    - propriedades
-    - seletores
-    - classes
-    - cascata
+responsabilidade
+função tem que ter uma única responsabilidade -> (ideal)
 
-3. Conceitos de JS
-    - eventos (teclado e mouse)
-    - DOM (achar elementos na tela)
+um código já escrito -> melhorar = refatoração(refactor)
 
-4. Conceitos do navegador
-    - renderizar
-    - eventos
+refatora -> testa -> salva (commit)
+
+ ÚNICA RESPONSABILIDADE
+ analisando classes e as responsabilidades de cada uma

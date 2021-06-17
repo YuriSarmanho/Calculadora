@@ -19,4 +19,11 @@ class OperationHelper {
     isChangeValue(value, isTypingChange) {
         return isTypingChange && value === "+-";
     }
+
+    isComposedOperation(typeComposed, value) {
+        if (typeComposed) {
+            return typeComposedOperation(true, value);
+        }
+            return typeComposedOperation(); 
+    }
 }
