@@ -1,5 +1,4 @@
 class User{
-
     inputHandler(value) {
             if (helper.isOperation(value)) {
                 saveOperation(value);
@@ -11,20 +10,19 @@ class User{
             if (helper.isSimpleOperation(value, memory.isTypingSecondValue)) {
                 calculator.execSimpleEqual();
             }
-            //Realizar operação composta
+    
             if (helper.isComposedOperation()) {
                 calculator.execComposedOperation();
             }
-            //Operação composta apertando igual
+            
             if (helper.isComposedOperation(true, value)) {
-                memory.operations[1] = memory.operations[2];
+                calculator.setAfterEqualValue();// adicionado para facilitar o entendimento do código 
                 calculator.execComposedOperation();
             }
             if (helper.isChangeValue(value, memory.isTypingChange)) {
-                changeValue();
+                calculator.changeValue();
             }
             if (value === "ac") {
-                updateVisor(null, true);
                 calculator.cleanMemory();
             }
             }  else{

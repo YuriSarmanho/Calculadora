@@ -26,6 +26,7 @@ class Calculator {
         memory.isTypingChange = false;
         memory.nextOperation = false;
         memory.isTypingSecondValue = false;
+        updateVisor(null, true);
     }
 
     changeValue() {
@@ -36,7 +37,10 @@ class Calculator {
         memory.firstValue = memory.result;
         updateVisor(memory.result, true);
     }
-
+    setAfterEqualValue(){
+        memory.operations[1] = memory.operations[2];
+    }
+    
     executeOperation() {
         const firstOperation = memory.operations[0];
             switch (firstOperation) {
