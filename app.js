@@ -53,8 +53,10 @@ class App {
         if (isAfterEqualOperation) {
             return value != "=" && this.memory.nextOperation;
         }
-        // todo: explicar coerção de tipo em this.memory.secodValue
-        return this.memory.operations[1] != "=" && this.memory.secondValue > 0; //antes do igual
+        return (
+            this.memory.operations[1] !== "=" &&
+            this.memory.secondValue.length > 0
+        ); //antes do igual
     }
 
     initKeyboardListener() {
