@@ -10,7 +10,7 @@
     height: 500px;
     width: 350px;
     grid-template-columns: 1fr;
-    grid-template-rows: 10% 90%;
+    grid-template-rows: 20% 90%;
     grid-template-areas: "visor" "area-butoes";
 }
 
@@ -19,14 +19,31 @@
     display: grid;
     width: 100%;
     grid-template-columns: 80% 20%;
-    grid-template-rows: 10% 90%;
-    grid-template-areas: "operacoes" "numeros";
+    grid-template-rows: 20% 80%;
+    grid-template-areas: "linha-operacoes" "numeros";
 }
 
 #area-numeros {
     grid-area: numeros;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(30px, 1fr));
 }
 
-#area-operacoes {
-    grid-area: ;
+#coluna-operacoes {
+    grid-column: 2 /3;
+    grid-row: 1/ -1;
+    display: grid;
+    grid-template-rows: 20% repeat(4, minmax(50px, 1fr));
+}
+
+#ultima-linha {
+    grid-column: span 3;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(50px, 1fr));
+}
+
+#linha-operacoes {
+    grid-area: linha-operacoes;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(50px, 1fr));
 }
