@@ -4,7 +4,16 @@
 // isso é um objeto ou instância da classe Helper
 const helper = new OperationHelper();
 const calculator = new Calculator();
-const user = new User();
+const inputHandler = new InputHandler();
+
+// escopo global
+document.addEventListener("keydown", function (event) {
+    // qual foi a tecla clicada?
+    const value = event.key;
+    // se ela for um número ou operação
+    // todo: como identificar isso aqui???
+    inputHandler.handle(value);
+});
 
 //State
 const memory = {
@@ -17,8 +26,8 @@ const memory = {
     nextOperation: false,
 };
 
-
 function updateVisor(value, reset) {
+    // elemento DOM
     const display = document.getElementById("visor");
     if (reset) {
         display.value = value;

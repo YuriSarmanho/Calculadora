@@ -1,5 +1,5 @@
-class User {
-    inputHandler(value) {
+class InputHandler {
+    handle(value) {
         if (helper.isOperation(value)) {
             saveOperation(value);
             // define isTypingSecondValue

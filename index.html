@@ -14,7 +14,7 @@
     <!-- importar = carregar o arquivo -->
     <script src="./src/OperationHelper.js" ></script>
     <script src="./src/Calculator.js" ></script>
-    <script src="./src/User.js" ></script>
+    <script src="./src/InputHandler.js" ></script>
     <script src="./app.js" ></script>
 </head>
 <body>
@@ -26,37 +26,38 @@
             <div class="container-botoes">
                 <div id="area-numeros">
                     <div class="linha">
-                        <button onclick="user.inputHandler('ac')" class="calc-btn">AC</button>
-                        <button onclick="user.inputHandler('+-')" class="calc-btn">+/-</button>
-                        <button onclick="user.inputHandler('%')" class="calc-btn">%</button>
+                        <!-- elemento DOM -->
+                        <button onclick="inputHandler.handle('ac')" class="calc-btn">AC</button>
+                        <button onclick="inputHandler.handle('+-')" class="calc-btn">+/-</button>
+                        <button onclick="inputHandler.handle('%')" class="calc-btn">%</button>
                     </div>
                     <div class="linha">
-                        <button onclick="user.inputHandler('7')" class="calc-btn">7</button>
-                        <button onclick="user.inputHandler('8')" class="calc-btn">8</button>
-                        <button onclick="user.inputHandler('9')" class="calc-btn">9</button>
+                        <button onclick="inputHandler.handle('7')" class="calc-btn">7</button>
+                        <button onclick="inputHandler.handle('8')" class="calc-btn">8</button>
+                        <button onclick="inputHandler.handle('9')" class="calc-btn">9</button>
                     </div>
                     <div class="linha">
-                        <button onclick="user.inputHandler('4')" class="calc-btn">4</button>
-                        <button onclick="user.inputHandler('5')" class="calc-btn">5</button>
-                        <button onclick="user.inputHandler('6')" class="calc-btn">6</button>
+                        <button onclick="inputHandler.handle('4')" class="calc-btn">4</button>
+                        <button onclick="inputHandler.handle('5')" class="calc-btn">5</button>
+                        <button onclick="inputHandler.handle('6')" class="calc-btn">6</button>
                     </div>
                     <div class="linha">
-                        <button onclick="user.inputHandler('1')" class="calc-btn">1</button>
-                        <button onclick="user.inputHandler('2')" class="calc-btn">2</button>
-                        <button onclick="user.inputHandler('3')" class="calc-btn">3</button>
+                        <button onclick="inputHandler.handle('1')" class="calc-btn">1</button>
+                        <button onclick="inputHandler.handle('2')" class="calc-btn">2</button>
+                        <button onclick="inputHandler.handle('3')" class="calc-btn">3</button>
                     </div>
                     <div class="linha">
-                        <button onclick="user.inputHandler('0')" class="calc-btn">0</button>
-                        <button onclick="user.inputHandler('.')" class="calc-btn">.</button>
+                        <button onclick="inputHandler.handle('0')" class="calc-btn">0</button>
+                        <button onclick="inputHandler.handle('.')" class="calc-btn">.</button>
                     </div>
                 </div>
 
                 <div id="area-operacoes">   
-                    <button onclick="user.inputHandler('+')" class="calc-btn calc-btn-orange">+</button>
-                    <button onclick="user.inputHandler('-')" class="calc-btn calc-btn-orange">-</button>
-                    <button onclick="user.inputHandler('/')" class="calc-btn calc-btn-orange">/</button>
-                    <button onclick="user.inputHandler('X')" class="calc-btn calc-btn-orange">X</button>
-                    <button onclick="user.inputHandler('=')" class="calc-btn calc-btn-orange">=</button>
+                    <button onclick="inputHandler.handle('+')" class="calc-btn calc-btn-orange">+</button>
+                    <button onclick="inputHandler.handle('-')" class="calc-btn calc-btn-orange">-</button>
+                    <button onclick="inputHandler.handle('/')" class="calc-btn calc-btn-orange">/</button>
+                    <button onclick="inputHandler.handle('X')" class="calc-btn calc-btn-orange">X</button>
+                    <button onclick="inputHandler.handle('=')" class="calc-btn calc-btn-orange">=</button>
                 </div>
 
             </div>
