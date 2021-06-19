@@ -2,18 +2,6 @@
 // importar no html
 
 // isso é um objeto ou instância da classe Helper
-const helper = new OperationHelper();
-const calculator = new Calculator();
-const inputHandler = new InputHandler();
-
-// escopo global
-document.addEventListener("keydown", function (event) {
-    // qual foi a tecla clicada?
-    const value = event.key;
-    // se ela for um número ou operação
-    // todo: como identificar isso aqui???
-    inputHandler.handle(value);
-});
 
 //State
 const memory = {
@@ -25,6 +13,19 @@ const memory = {
     isTypingChange: false,
     nextOperation: false,
 };
+
+const helper = new OperationHelper();
+const calculator = new Calculator(memory);
+const inputHandler = new InputHandler(memory);
+
+// escopo global
+document.addEventListener("keydown", function (event) {
+    // qual foi a tecla clicada?
+    const value = event.key;
+    // se ela for um número ou operação
+    // todo: como identificar isso aqui???
+    inputHandler.handle(value);
+});
 
 function updateVisor(value, reset) {
     // elemento DOM

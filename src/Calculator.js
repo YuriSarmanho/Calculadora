@@ -4,57 +4,76 @@
 //Colocar a atualização do visor aqui
 
 class Calculator {
+    constructor(memory) {
+        if (typeof memory === "undefined") {
+            throw Error("InputHandler needs a memory object");
+        }
+        this.memory = memory;
+    }
+
     execComposedOperation() {
         const result = this.executeOperation();
-        memory.firstValue = result;
-        memory.secondValue = [];
-        memory.nextOperation = false;
-        memory.operations = [memory.operations[1]];
+        this.memory.firstValue = result;
+        this.memory.secondValue = [];
+        this.memory.nextOperation = false;
+        this.memory.operations = [this.memory.operations[1]];
     }
 
     execSimpleEqual() {
-        memory.result = this.executeOperation();
-        updateVisor(memory.result, true);
-        memory.nextOperation = true;
+        this.memory.result = this.executeOperation();
+        updateVisor(this.memory.result, true);
+        this.memory.nextOperation = true;
     }
 
     cleanMemory() {
-        memory.firstValue = [];
-        memory.secondValue = [];
-        memory.operations = [];
-        memory.isTypingChange = false;
-        memory.nextOperation = false;
-        memory.isTypingSecondValue = false;
+        this.memory.firstValue = [];
+        this.memory.secondValue = [];
+        this.memory.operations = [];
+        this.memory.isTypingChange = false;
+        this.memory.nextOperation = false;
+        this.memory.isTypingSecondValue = false;
         updateVisor(null, true);
     }
 
     changeValue() {
-        memory.result *= -1; //memory.result = memory.result * -1
-        memory.nextOperation = false;
-        memory.secondValue = [];
-        memory.operations = [];
-        memory.firstValue = memory.result;
-        updateVisor(memory.result, true);
+        this.memory.result *= -1; //this.memory.result = this.memory.result * -1
+        this.memory.nextOperation = false;
+        this.memory.secondValue = [];
+        this.memory.operations = [];
+        this.memory.firstValue = this.memory.result;
+        updateVisor(this.memory.result, true);
     }
     setAfterEqualValue() {
-        memory.operations[1] = memory.operations[2];
+        this.memory.operations[1] = this.memory.operations[2];
     }
 
     executeOperation() {
-        const firstOperation = memory.operations[0];
+        const firstOperation = this.memory.operations[0];
         switch (firstOperation) {
             case "+":
-                return Number(memory.firstValue) + Number(memory.secondValue);
+                return (
+                    Number(this.memory.firstValue) +
+                    Number(this.memory.secondValue)
+                );
             case "-":
-                return Number(memory.firstValue) - Number(memory.secondValue);
+                return (
+                    Number(this.memory.firstValue) -
+                    Number(this.memory.secondValue)
+                );
             case "X":
-                return Number(memory.firstValue) * Number(memory.secondValue);
+                return (
+                    Number(this.memory.firstValue) *
+                    Number(this.memory.secondValue)
+                );
             case "/":
-                return Number(memory.firstValue) / Number(memory.secondValue);
+                return (
+                    Number(this.memory.firstValue) /
+                    Number(this.memory.secondValue)
+                );
             case "%":
                 return (
-                    (Number(memory.firstValue) / 100) *
-                    Number(memory.secondValue)
+                    (Number(this.memory.firstValue) / 100) *
+                    Number(this.memory.secondValue)
                 );
         }
     }
