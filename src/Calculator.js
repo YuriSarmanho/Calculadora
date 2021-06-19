@@ -1,10 +1,9 @@
 // definção
 // a responsabilidade (calcular operações, retorna os resultados, define os valores na memória)
 // todo: analisar de quem é a responsabilidade de atualizar o visor
-//Colocar a atualização do visor aqui 
+//Colocar a atualização do visor aqui
 
 class Calculator {
-    
     execComposedOperation() {
         const result = this.executeOperation();
         memory.firstValue = result;
@@ -12,7 +11,7 @@ class Calculator {
         memory.nextOperation = false;
         memory.operations = [memory.operations[1]];
     }
-     
+
     execSimpleEqual() {
         memory.result = this.executeOperation();
         updateVisor(memory.result, true);
@@ -37,23 +36,26 @@ class Calculator {
         memory.firstValue = memory.result;
         updateVisor(memory.result, true);
     }
-    setAfterEqualValue(){
+    setAfterEqualValue() {
         memory.operations[1] = memory.operations[2];
     }
-    
+
     executeOperation() {
         const firstOperation = memory.operations[0];
-            switch (firstOperation) {
-                case "+":
-                    return Number(memory.firstValue) + Number(memory.secondValue);
-                case "-":
-                    return Number(memory.firstValue) - Number(memory.secondValue);
-                case "X":
-                    return Number(memory.firstValue) * Number(memory.secondValue);
-                case "/":
-                    return Number(memory.firstValue) / Number(memory.secondValue);
-                case "%":
-                    return (Number(memory.firstValue) / 100) * Number(memory.secondValue);
+        switch (firstOperation) {
+            case "+":
+                return Number(memory.firstValue) + Number(memory.secondValue);
+            case "-":
+                return Number(memory.firstValue) - Number(memory.secondValue);
+            case "X":
+                return Number(memory.firstValue) * Number(memory.secondValue);
+            case "/":
+                return Number(memory.firstValue) / Number(memory.secondValue);
+            case "%":
+                return (
+                    (Number(memory.firstValue) / 100) *
+                    Number(memory.secondValue)
+                );
         }
     }
 }
