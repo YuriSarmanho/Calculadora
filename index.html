@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,15 +9,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="./style.css">  
-    <link rel="stylesheet" href="./css/buttons.css">  
-    <link rel="stylesheet" href="./css/visor.css">  
+    <link rel="stylesheet" href="./gridStyle.css">
+    <!-- <link rel="stylesheet" href="./style.css">   -->
+    <link rel="stylesheet" href="./css/buttons.css">
+    <link rel="stylesheet" href="./css/visor.css">
     <!-- importar = carregar o arquivo -->
-    <script src="./src/OperationHelper.js" ></script>
-    <script src="./src/Calculator.js" ></script>
-    <script src="./src/InputHandler.js" ></script>
-    <script src="./app.js" ></script>
+    <script src="./src/OperationHelper.js"></script>
+    <script src="./src/Calculator.js"></script>
+    <script src="./src/InputHandler.js"></script>
+    <script src="./app.js"></script>
 </head>
+
 <body>
     <div class="container">
         <div class="calculadora">
@@ -24,35 +27,30 @@
                 <input type="text" id="visor" readonly>
             </div>
             <div class="container-botoes">
+                <div class="linha" id="linha-operacoes">
+                    <button onclick="app.inputHandler.handle('ac')" class="calc-btn">AC</button>
+                    <button onclick="app.inputHandler.handle('+-')" class="calc-btn">+/-</button>
+                    <button onclick="app.inputHandler.handle('%')" class="calc-btn">%</button>
+                </div>
                 <div id="area-numeros">
-                    <div class="linha">
-                        <!-- elemento DOM -->
-                        <button onclick="app.inputHandler.handle('ac')" class="calc-btn">AC</button>
-                        <button onclick="app.inputHandler.handle('+-')" class="calc-btn">+/-</button>
-                        <button onclick="app.inputHandler.handle('%')" class="calc-btn">%</button>
-                    </div>
-                    <div class="linha">
-                        <button onclick="app.inputHandler.handle('7')" class="calc-btn">7</button>
-                        <button onclick="app.inputHandler.handle('8')" class="calc-btn">8</button>
-                        <button onclick="app.inputHandler.handle('9')" class="calc-btn">9</button>
-                    </div>
-                    <div class="linha">
-                        <button onclick="app.inputHandler.handle('4')" class="calc-btn">4</button>
-                        <button onclick="app.inputHandler.handle('5')" class="calc-btn">5</button>
-                        <button onclick="app.inputHandler.handle('6')" class="calc-btn">6</button>
-                    </div>
-                    <div class="linha">
-                        <button onclick="app.inputHandler.handle('1')" class="calc-btn">1</button>
-                        <button onclick="app.inputHandler.handle('2')" class="calc-btn">2</button>
-                        <button onclick="app.inputHandler.handle('3')" class="calc-btn">3</button>
-                    </div>
-                    <div class="linha">
+                    <button onclick="app.inputHandler.handle('7')" class="calc-btn">7</button>
+                    <button onclick="app.inputHandler.handle('8')" class="calc-btn">8</button>
+                    <button onclick="app.inputHandler.handle('9')" class="calc-btn">9</button>
+
+                    <button onclick="app.inputHandler.handle('4')" class="calc-btn">4</button>
+                    <button onclick="app.inputHandler.handle('5')" class="calc-btn">5</button>
+                    <button onclick="app.inputHandler.handle('6')" class="calc-btn">6</button>
+
+                    <button onclick="app.inputHandler.handle('1')" class="calc-btn">1</button>
+                    <button onclick="app.inputHandler.handle('2')" class="calc-btn">2</button>
+                    <button onclick="app.inputHandler.handle('3')" class="calc-btn">3</button>
+                    <div id="ultima-linha">
                         <button onclick="app.inputHandler.handle('0')" class="calc-btn">0</button>
                         <button onclick="app.inputHandler.handle('.')" class="calc-btn">.</button>
                     </div>
-                </div>
 
-                <div id="area-operacoes">   
+                </div>
+                <div id="coluna-operacoes">
                     <button onclick="app.inputHandler.handle('+')" class="calc-btn calc-btn-orange">+</button>
                     <button onclick="app.inputHandler.handle('-')" class="calc-btn calc-btn-orange">-</button>
                     <button onclick="app.inputHandler.handle('/')" class="calc-btn calc-btn-orange">/</button>
@@ -64,4 +62,5 @@
         </div>
     </div>
 </body>
+
 </html>

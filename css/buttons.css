@@ -1,15 +1,16 @@
-.container-botoes {
-    /*Determina o tipo de display dos botoes e que eles irao ocupar todo o espaco de altura*/
+/*Determina o tipo de display dos botoes e que eles irao ocupar todo o espaco de altura*/
+
+/* .container-botoes {
     flex-grow: 1;
     display: flex;
-}
+} */
 
-.linha .calc-btn {
+/* .linha .calc-btn {
     flex-grow: 1;
-}
+} */
 
 #area-operacoes .calc-btn {
-    flex-grow: 1;
+    /* flex-grow: 1; */
     /*Faz com que os botoes de operacao ocupem toda a area da coluna*/
 }
 
