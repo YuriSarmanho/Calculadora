@@ -21,7 +21,7 @@ class Calculator {
 
     execSimpleEqual() {
         this.memory.result = this.executeOperation();
-        updateVisor(this.memory.result, true);
+        app.updateVisor(this.memory.result, true);
         this.memory.nextOperation = true;
     }
 
@@ -32,7 +32,7 @@ class Calculator {
         this.memory.isTypingChange = false;
         this.memory.nextOperation = false;
         this.memory.isTypingSecondValue = false;
-        updateVisor(null, true);
+        app.updateVisor(null, true);
     }
 
     changeValue() {
@@ -41,7 +41,7 @@ class Calculator {
         this.memory.secondValue = [];
         this.memory.operations = [];
         this.memory.firstValue = this.memory.result;
-        updateVisor(this.memory.result, true);
+        app.updateVisor(this.memory.result, true);
     }
     setAfterEqualValue() {
         this.memory.operations[1] = this.memory.operations[2];

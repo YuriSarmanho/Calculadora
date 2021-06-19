@@ -31,8 +31,8 @@ class OperationHelper {
 
     isComposedOperation(typeComposed, value) {
         if (typeComposed) {
-            return typeComposedOperation(true, value);
+            return app.typeComposedOperation(true, value);
         }
-        return typeComposedOperation();
+        return app.typeComposedOperation();
     }
 }

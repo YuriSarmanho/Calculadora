@@ -3,39 +3,45 @@ class InputHandler {
         if (typeof memory === "undefined") {
             throw Error("InputHandler needs a memory object");
         }
+        this.helper = new OperationHelper();
         this.memory = memory;
+        this.calculator = new Calculator(this.memory);
     }
 
     handle(value) {
-        if (helper.isOperation(value)) {
-            saveOperation(value);
+        if (this.helper.isOperation(value)) {
+            app.saveOperation(value);
             // define isTypingSecondValue
             if (this.memory.firstValue.length > 0) {
-                nextNumber();
+                app.nextNumber();
             }
             //Operação simples
             if (
-                helper.isSimpleOperation(value, this.memory.isTypingSecondValue)
+                this.helper.isSimpleOperation(
+                    value,
+                    this.memory.isTypingSecondValue
+                )
             ) {
-                calculator.execSimpleEqual();
+                this.calculator.execSimpleEqual();
             }
 
-            if (helper.isComposedOperation()) {
-                calculator.execComposedOperation();
+            if (this.helper.isComposedOperation()) {
+                this.calculator.execComposedOperation();
             }
 
-            if (helper.isComposedOperation(true, value)) {
-                calculator.setAfterEqualValue(); // adicionado para facilitar o entendimento do código
-                calculator.execComposedOperation();
+            if (this.helper.isComposedOperation(true, value)) {
+                this.calculator.setAfterEqualValue(); // adicionado para facilitar o entendimento do código
+                this.calculator.execComposedOperation();
             }
-            if (helper.isChangeValue(value, this.memory.isTypingChange)) {
-                calculator.changeValue();
+            if (this.helper.isChangeValue(value, this.memory.isTypingChange)) {
+                this.calculator.changeValue();
             }
             if (value === "ac") {
-                calculator.cleanMemory();
+                this.calculator.cleanMemory();
             }
         } else {
-            addNumber(value);
+            // app is global
+            app.addNumber(value);
         }
     }
 }
