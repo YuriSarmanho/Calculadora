@@ -9,11 +9,16 @@ class OperationHelper {
         //  tentar modificar como validar se é uma operação ou não
         //  if/else, loop for, loop while, switch
         //  return this.operationStrings.includes(value);
-         for(var itensOperation=0; itensOperation < this.operationStrings.length;itensOperation++){
-             if(value === this.operationStrings[itensOperation]){
-                 return true 
-             }
-         } 
+        for (
+            var itensOperation = 0;
+            itensOperation < this.operationStrings.length;
+            itensOperation++
+        ) {
+            if (value === this.operationStrings[itensOperation]) {
+                return true;
+            }
+        }
+        return false;
     }
 
     isSimpleOperation(value, isTypingSecondValue) {
@@ -26,8 +31,8 @@ class OperationHelper {
 
     isComposedOperation(typeComposed, value) {
         if (typeComposed) {
-            return typeComposedOperation(true, value);
+            return app.typeComposedOperation(true, value);
         }
-            return typeComposedOperation(); 
+        return app.typeComposedOperation();
     }
 }
