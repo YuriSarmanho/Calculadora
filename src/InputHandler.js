@@ -36,7 +36,7 @@ class InputHandler {
             if (this.helper.isChangeValue(value, this.memory.isTypingChange)) {
                 this.calculator.changeValue();
             }
-            if (value === "ac") {
+            if (value === "Backspace") {
                 this.calculator.cleanMemory();
             }
         } else {

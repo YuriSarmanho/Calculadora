@@ -2,7 +2,7 @@
 // responsabilidade de validar operações (operações ou não,...)
 class OperationHelper {
     // só existe aqui
-    operationStrings = ["+", "-", "X", "/", "ac", "+-", "%", "="];
+    operationStrings = ["+", "-", "*", "/", "Backspace", "+-", "%", 'Enter'];
     // tem que retornar true || false
     // não pode alterar o número de parametros
     isOperation(value) {
@@ -20,9 +20,18 @@ class OperationHelper {
         }
         return false;
     }
+    isNumber(value){
+        var value = Number(value)
+        for(var numbers = 0;numbers < 9; numbers++){
+            if(value === numbers){
+                return true;
+            }
+        }
+        return false;
+    }
 
     isSimpleOperation(value, isTypingSecondValue) {
-        return isTypingSecondValue && value === "=";
+        return isTypingSecondValue && value === 'Enter';
     }
 
     isChangeValue(value, isTypingChange) {
@@ -35,4 +44,5 @@ class OperationHelper {
         }
         return app.typeComposedOperation();
     }
+    
 }

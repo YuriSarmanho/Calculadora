@@ -60,7 +60,7 @@ class Calculator {
                     Number(this.memory.firstValue) -
                     Number(this.memory.secondValue)
                 );
-            case "X":
+            case "*":
                 return (
                     Number(this.memory.firstValue) *
                     Number(this.memory.secondValue)

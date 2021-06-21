@@ -16,6 +16,7 @@ class App {
             nextOperation: false,
         };
         this.inputHandler = new InputHandler(this.memory);
+        this.helper = new OperationHelper();
     }
 
     updateVisor(value, reset) {
@@ -51,10 +52,10 @@ class App {
 
     typeComposedOperation(isAfterEqualOperation, value) {
         if (isAfterEqualOperation) {
-            return value != "=" && this.memory.nextOperation;
+            return value != 'Enter' && this.memory.nextOperation;
         }
         return (
-            this.memory.operations[1] !== "=" &&
+            this.memory.operations[1] !== 'Enter' &&
             this.memory.secondValue.length > 0
         ); //antes do igual
     }
@@ -63,15 +64,13 @@ class App {
         document.addEventListener(
             "keydown",
             function (event) {
-                // qual foi a tecla clicada?
                 const value = event.key;
-                // se ela for um número ou operação
-                // todo: como identificar isso aqui???
+                if(this.helper.isOperation(value) || this.helper.isNumber(value)){
                 this.inputHandler.handle(value);
+                }
             }.bind(this)
         );
     }
 }
-
 const app = new App();
 app.initKeyboardListener();
