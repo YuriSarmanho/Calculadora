@@ -65,7 +65,7 @@ class App {
             "keydown",
             function (event) {
                 const value = event.key;
-                if(this.helper.isOperation(value) || this.helper.isNumber(value)){
+                if(this.helper.isOperation(value) || this.helper.isNumber(value) || value === "."){
                 this.inputHandler.handle(value);
                 }
             }.bind(this)
