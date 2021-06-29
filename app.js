@@ -28,7 +28,7 @@ class App {
             display.value += value;
         }
     }
-
+    
     saveOperation(value) {
         this.memory.operations.push(value);
     }

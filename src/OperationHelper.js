@@ -2,7 +2,7 @@
 // responsabilidade de validar operações (operações ou não,...)
 class OperationHelper {
     // só existe aqui
-    operationStrings = ["+", "-", "*", "/", "Backspace", "+-", "%", 'Enter'];
+    operationStrings = ["+", "-", "*", "/", "Backspace","AC", "+-", "%", 'Enter',"="];
     // tem que retornar true || false
     // não pode alterar o número de parametros
     isOperation(value) {
@@ -43,6 +43,9 @@ class OperationHelper {
             return app.typeComposedOperation(true, value);
         }
         return app.typeComposedOperation();
+    }
+    isCleanMemory(value){
+        return value === "Backspace" || value === "AC";
     }
     
 }

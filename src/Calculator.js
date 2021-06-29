@@ -11,6 +11,14 @@ class Calculator {
         this.memory = memory;
     }
 
+    visorNotify(){
+        const display = document.getElementById("visor");
+        app.updateVisor('',true);
+        setTimeout(app.updateVisor(this.memory.firstValue), 2000);
+    }
+
+    
+
     execComposedOperation() {
         const result = this.executeOperation();
         this.memory.firstValue = result;
@@ -34,7 +42,8 @@ class Calculator {
         this.memory.isTypingSecondValue = false;
         app.updateVisor(null, true);
     }
-
+        
+    
     changeValue() {
         this.memory.result *= -1; //this.memory.result = this.memory.result * -1
         this.memory.nextOperation = false;

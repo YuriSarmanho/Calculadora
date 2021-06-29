@@ -10,12 +10,11 @@ class InputHandler {
 
     handle(value) {
         if (this.helper.isOperation(value)) {
+            this.calculator.visorNotify();
             app.saveOperation(value);
-            // define isTypingSecondValue
             if (this.memory.firstValue.length > 0) {
                 app.nextNumber();
             }
-            //Operação simples
             if (
                 this.helper.isSimpleOperation(
                     value,
@@ -36,7 +35,7 @@ class InputHandler {
             if (this.helper.isChangeValue(value, this.memory.isTypingChange)) {
                 this.calculator.changeValue();
             }
-            if (value === "Backspace") {
+            if (this.helper.isCleanMemory(value)) {
                 this.calculator.cleanMemory();
             }
         } else {
