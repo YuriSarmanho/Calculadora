@@ -1,0 +1,44 @@
+- front-end x back-end?
+  - Front-end
+    - interação com o usuário
+    - Visual da aplicação
+    - Interativa
+  - back-end
+    - servidor 
+    - banco de dados
+    - segurança
+
+- HTML: estrutura da interface
+  - tags 
+  - importação de scripts, stylesheet (folha de estilo)
+  - atributos das tag (onclick)
+
+- CSS: são regras de estilização
+  - seletores (selectors)
+    - class 
+    - ID 
+    - tags
+  - sobrescrita/cascata 
+  - propriedades 
+
+- Javascript: gerenciar ação na página
+  - lógica da aplicação
+  - Eventos (cliques, de teclado...)
+  - class 
+  - Tipagem forte x fraca 
+  - escopo (global x local)
+  - DOM x manipulação
+
+
+- Conceitos de programação
+  - Tipagem forte x fraca
+  - escopo
+  - Refatoração (facilitar a leitura, dividir em função, reusabilidade)
+  - função (cada função uma responsabilidade)
+  - execução do código
+
+
+
+- 1 mes fazendo o projeto
+- exemplo de primeiro código -> um projetinho rodando
+- usa esse projeto pra olhar trás e comparar a tua evolução
