@@ -14,6 +14,7 @@ class Calculator {
     visorNotify() {
         app.updateVisor('', true);
         setTimeout(() => {
+            // mover isso pro app -> pq é repsonsabilidade dele
             // tarefa: como piscar o resultado?????
             if (this.memory.secondValue !== this.memory.result) {
                 app.updateVisor(this.memory.firstValue);
