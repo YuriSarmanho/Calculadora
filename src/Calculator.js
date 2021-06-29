@@ -11,13 +11,17 @@ class Calculator {
         this.memory = memory;
     }
 
-    visorNotify(){
-        const display = document.getElementById("visor");
-        app.updateVisor('',true);
-        setTimeout(app.updateVisor(this.memory.firstValue), 2000);
+    visorNotify() {
+        app.updateVisor('', true);
+        setTimeout(() => {
+            // tarefa: como piscar o resultado?????
+            if (this.memory.secondValue !== this.memory.result) {
+                app.updateVisor(this.memory.firstValue);
+            }
+        }, 100);
     }
 
-    
+
 
     execComposedOperation() {
         const result = this.executeOperation();
@@ -42,8 +46,8 @@ class Calculator {
         this.memory.isTypingSecondValue = false;
         app.updateVisor(null, true);
     }
-        
-    
+
+
     changeValue() {
         this.memory.result *= -1; //this.memory.result = this.memory.result * -1
         this.memory.nextOperation = false;

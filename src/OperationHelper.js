@@ -20,6 +20,9 @@ class OperationHelper {
         }
         return false;
     }
+
+    // todo: procurar o que é regex
+    // tratamento de string
     isNumber(value) {
         var value = Number(value)
         for (var numbers = 0; numbers <= 9; numbers++) {
