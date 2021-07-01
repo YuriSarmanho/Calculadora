@@ -57,7 +57,16 @@ class App {
         return (
             this.memory.operations[1] !== '=' &&
             this.memory.secondValue.length > 0
-        ); //antes do igual
+        ); 
+    }
+    visorNotify() {
+        this.updateVisor('', true);
+        setTimeout(() => {
+            if (this.memory.operations[1] != "=") {
+                return app.updateVisor(this.memory.firstValue);
+            }
+                return app.updateVisor(this.memory.result)
+        }, 100);
     }
 
     initKeyboardListener() {

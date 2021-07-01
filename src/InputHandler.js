@@ -18,7 +18,7 @@ class InputHandler {
         }
 
         if (this.helper.isOperation(value)) {
-            this.calculator.visorNotify();
+            // app.visorNotify();
             app.saveOperation(value);
             if (this.memory.firstValue.length > 0) {
                 app.nextNumber();
@@ -42,6 +42,7 @@ class InputHandler {
             if (this.helper.isCleanMemory(value)) {
                 this.calculator.cleanMemory();
             }
+            app.visorNotify();
         } else {
             // app is global
             app.addNumber(value);
