@@ -28,7 +28,7 @@ class App {
             display.value += value;
         }
     }
-    
+
     saveOperation(value) {
         this.memory.operations.push(value);
     }
@@ -52,27 +52,22 @@ class App {
 
     typeComposedOperation(isAfterEqualOperation, value) {
         if (isAfterEqualOperation) {
-            return value != 'Enter' && this.memory.nextOperation;
+            return value != '=' && this.memory.nextOperation;
         }
         return (
-            this.memory.operations[1] !== 'Enter' &&
+            this.memory.operations[1] !== '=' &&
             this.memory.secondValue.length > 0
         ); //antes do igual
     }
-    visorNotify(){
-        const display = document.getElementById("visor");
-        this.updateVisor('',true);
-        setTimeout(this.updateVisor(this.memory.firstValue), 2000);
-    }
 
     initKeyboardListener() {
+        // event listener -> escuta eventos de teclado
+        // reutização do código
         document.addEventListener(
             "keydown",
             function (event) {
                 const value = event.key;
-                if(this.helper.isOperation(value) || this.helper.isNumber(value) || value === "."){
                 this.inputHandler.handle(value);
-                }
             }.bind(this)
         );
     }

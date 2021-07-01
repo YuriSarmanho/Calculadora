@@ -9,18 +9,22 @@ class InputHandler {
     }
 
     handle(value) {
+        // valor valido
+        if (!this.isValid(value)) {
+            return;
+        }
+        if (value === 'Enter') {
+            value = '=';
+        }
+
         if (this.helper.isOperation(value)) {
             this.calculator.visorNotify();
             app.saveOperation(value);
             if (this.memory.firstValue.length > 0) {
                 app.nextNumber();
             }
-            if (
-                this.helper.isSimpleOperation(
-                    value,
-                    this.memory.isTypingSecondValue
-                )
-            ) {
+
+            if (this.helper.isSimpleOperation(value, this.memory.isTypingSecondValue)) {
                 this.calculator.execSimpleEqual();
             }
 
@@ -42,5 +46,9 @@ class InputHandler {
             // app is global
             app.addNumber(value);
         }
+    }
+
+    isValid(value) {
+        return this.helper.isNumber(value) || value === '.' || value === 'Enter' || this.helper.isOperation(value);
     }
 }

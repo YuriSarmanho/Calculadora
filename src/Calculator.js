@@ -11,6 +11,19 @@ class Calculator {
         this.memory = memory;
     }
 
+    visorNotify() {
+        app.updateVisor('', true);
+        setTimeout(() => {
+            // mover isso pro app -> pq é repsonsabilidade dele
+            // tarefa: como piscar o resultado?????
+            if (this.memory.secondValue !== this.memory.result) {
+                app.updateVisor(this.memory.firstValue);
+            }
+        }, 100);
+    }
+
+    //nada
+
     execComposedOperation() {
         const result = this.executeOperation();
         this.memory.firstValue = result;
@@ -34,8 +47,8 @@ class Calculator {
         this.memory.isTypingSecondValue = false;
         app.updateVisor(null, true);
     }
-        
-    
+
+
     changeValue() {
         this.memory.result *= -1; //this.memory.result = this.memory.result * -1
         this.memory.nextOperation = false;
