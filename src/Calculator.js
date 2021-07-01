@@ -11,14 +11,6 @@ class Calculator {
         this.memory = memory;
     }
 
-    visorNotify(){
-        const display = document.getElementById("visor");
-        app.updateVisor('',true);
-        setTimeout(app.updateVisor(this.memory.firstValue), 2000);
-    }
-
-    
-
     execComposedOperation() {
         const result = this.executeOperation();
         this.memory.firstValue = result;

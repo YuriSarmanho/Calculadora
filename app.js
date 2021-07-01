@@ -59,6 +59,11 @@ class App {
             this.memory.secondValue.length > 0
         ); //antes do igual
     }
+    visorNotify(){
+        const display = document.getElementById("visor");
+        this.updateVisor('',true);
+        setTimeout(this.updateVisor(this.memory.firstValue), 2000);
+    }
 
     initKeyboardListener() {
         document.addEventListener(
